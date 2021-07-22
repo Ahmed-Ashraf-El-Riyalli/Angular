@@ -27,10 +27,10 @@ export class AddProductComponent implements OnInit {
     const urlSection = 'Product';
 
     this.accessAPIService.add(urlSection, product).subscribe(
-      data => console.log(data),
+      data => {
+        this.router.navigate(['products', 'show']);
+      },
       error => console.log(error)
-    )
-
-    this.router.navigate(['products', 'show']);
+    );
   }
 }

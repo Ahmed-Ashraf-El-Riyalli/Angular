@@ -28,11 +28,11 @@ export class RemoveProductComponent implements OnInit {
 
   removeProduct(id: number): void {
     this.accessAPIService.delete(this.urlSection, id).subscribe(
-      data => console.log(data),
+      data => {
+        this.router.navigate(['products', 'show']);
+      },
       error => console.log(error)
-    )
-
-    this.router.navigate(['products', 'show']);
+    );
   }
 
 }
