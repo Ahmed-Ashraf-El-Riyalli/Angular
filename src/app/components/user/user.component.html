@@ -1,0 +1,28 @@
+<div class="alert alert-secondary">
+
+  <form (ngSubmit)="onSubmit()" *ngIf="user">
+    <div class="row form-group">
+      <label class="col-1 col-form-label p-2">Name : </label>
+      <labe class="col-3 form-control-plaintext">{{user.Name}}</labe>
+      <!-- <span class="col-3">Error</span> -->
+    </div>
+    <div class="row form-group">
+      <label class="col-1 col-form-label p-2">Age : </label>
+      <labe class="col-3 form-control-plaintext">{{user.Age}}</labe>
+      <!-- <span class="col-3">Error</span> -->
+    </div>
+    <div class="row form-group">
+      <label class="col-1 col-form-label p-2">Address : </label>
+      <labe class="col-3 form-control-plaintext">{{user.Address}}</labe>
+      <!-- <span class="col-3">Error</span> -->
+    </div>
+    <div class="row form-group">
+      <label class="col-1 col-form-label p-2">Email : </label>
+      <labe class="col-3 form-control-plaintext">{{user.Email}}</labe>
+      <!-- <span class="col-3">Error</span> -->
+    </div>
+
+    <input type="submit" value="Update" class="btn btn-success"/>
+  </form>
+
+</div>

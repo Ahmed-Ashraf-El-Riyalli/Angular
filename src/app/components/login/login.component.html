@@ -1,0 +1,45 @@
+<h2>Login</h2>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <table class="table table-bordered table-responsive">
+    <tbody>
+      <tr>
+        <td class="">
+          <label for="email">Email : </label>
+        </td>
+        <td>
+          <input id="email" type="email" formControlName="email" />
+          <ng-container *ngIf="emailControl.invalid && emailControl.dirty">
+            <span *ngIf="emailControl.errors.required">
+              Email is required
+            </span>
+            <span *ngIf="emailControl.errors.pattern">
+              Invalid Email
+            </span>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="">
+          <label for="password">Password : </label>
+        </td>
+        <td>
+          <input id="password" type="password" formControlName="password" />
+          <span *ngIf="passwordControl.invalid && passwordControl.dirty">
+            Invalid Password
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="submit" value="Login" [disabled]="loginForm.invalid" />
+        </td>
+        <td>
+          <input type="reset" value="Reset" (click)="onReset()" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+
+<h3 class="alert alert-danger" *ngIf="isNotAuthorize">Invalid Email or Password</h3>

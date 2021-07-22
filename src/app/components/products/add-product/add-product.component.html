@@ -1,0 +1,24 @@
+<div class="alert alert-secondary">
+
+  <form (ngSubmit)="addNewProduct(name.value, price.value, quantity.value)" class="m-4">
+    <div class="row form-group">
+      <label for="name" class="col-1 col-form-label p-2 text-sm-right">Name : </label>
+      <input id="name" class="col-3 form-control" type="text" placeholder="Name" #name />
+      <!-- <span class="col-3">Error</span> -->
+    </div>
+
+    <div class="row form-group">
+      <label for="price" class="col-1 col-form-label p-2 text-sm-right">Price : </label>
+      <input id="price" class="col-3 form-control" type="number" placeholder="Price" #price />
+    </div>
+
+    <div class="row form-group">
+      <label for="quantity" class="col-1 col-form-label p-2 text-sm-right">Quantity :  </label>
+      <input id="quantity" class="col-3 form-control" type="number" placeholder="Quantity" #quantity />
+    </div>
+
+    <input type="submit" value="Add New Product" class="btn btn-primary"/>
+    <a routerLink="../show" class="btn btn-secondary ml-2">Back to List</a>
+  </form>
+
+</div>

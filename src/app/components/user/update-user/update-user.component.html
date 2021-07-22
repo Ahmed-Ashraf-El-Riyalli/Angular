@@ -1,0 +1,59 @@
+<div class="alert alert-danger">
+
+  <form [formGroup]="userForm" (ngSubmit)="updateUser()" *ngIf="user">
+    <div class="row form-group">
+      <label class="col-1 col-form-label p-2">Name : </label>
+      <input class="col-3 form-control" formControlName="name" type="text" placeholder="Name" value="{{user.Name}}" />
+        <ng-container *ngIf="nameControl.invalid && nameControl.dirty">
+          <span class="ml-2" *ngIf="nameControl.errors.minlength">
+            Name is too short
+          </span>
+          <span class="ml-2" *ngIf="nameControl.errors.required">
+            Name is required
+          </span>
+        </ng-container>
+    </div>
+    <div class="row form-group">
+      <label class="col-1 col-form-label p-2">Age : </label>
+      <input class="col-3 form-control" formControlName="age" type="number" placeholder="Age" value="{{user.Age}}" />
+        <ng-container *ngIf="ageControl.invalid && ageControl.dirty">
+          <span class="ml-2" *ngIf="ageControl.errors.required">
+            Age is required
+          </span>
+        </ng-container>
+    </div>
+    <div class="row form-group">
+      <label class="col-1 col-form-label p-2">Address : </label>
+      <input class="col-3 form-control" formControlName="address" type="text" placeholder="Address" value="{{user.Address}}" />
+        <ng-container *ngIf="addressControl.invalid && addressControl.dirty">
+          <span class="ml-2" *ngIf="addressControl.errors.minlength">
+            Address is too short
+          </span>
+          <span class="ml-2" *ngIf="addressControl.errors.required">
+            Address is required
+          </span>
+        </ng-container>
+    </div>
+    <div class="row form-group">
+      <label class="col-1 col-form-label p-2">Email : </label>
+      <input class="col-3 form-control" formControlName="email" type="text" placeholder="Email" value="{{user.Email}}" />
+        <ng-container *ngIf="emailControl.invalid && emailControl.dirty">
+          <span class="ml-2" *ngIf="emailControl.errors.pattern">
+            Invalid Email
+          </span>
+          <span class="ml-2" *ngIf="emailControl.errors.minlength">
+            Email is too short
+          </span>
+          <span class="ml-2" *ngIf="emailControl.errors.required">
+            Email is required
+          </span>
+          <span class="ml-2" *ngIf="emailControl.errors.existingEmail">
+            Email Existing
+          </span>
+        </ng-container>
+    </div>
+
+    <input type="submit" value="Update" [disabled]="userForm.invalid" class="btn btn-success"/>
+  </form>
+
+</div>

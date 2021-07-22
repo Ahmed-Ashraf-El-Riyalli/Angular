@@ -1,0 +1,29 @@
+
+<div class="alert alert-secondary">
+
+  <div *ngIf="product">
+    <div class="row form-group">
+      <label class="col-1 col-form-label text-right">ID : </label>
+      <input class="col-3 form-control-plaintext" value="{{product.ID}}" />
+    </div>
+
+    <div class="row form-group">
+      <label class="col-1 col-form-label text-right p-2">Name : </label>
+      <input class="col-3 form-control-plaintext" value="{{product.Name}}" />
+    </div>
+
+    <div class="row form-group">
+      <label class="col-1 col-form-label text-right p-2">Price : </label>
+      <input class="col-3 form-control-plaintext" value="{{product.Price}}" />
+    </div>
+
+    <div class="row form-group">
+      <label class="col-1 col-form-label text-right p-2">Quantity : </label>
+      <input class="col-3 form-control-plaintext" value="{{product.Quantity}}" />
+    </div>
+
+    <a routerLink="../../show" class="btn btn-secondary mt-2">Back to List</a>
+    <button (click)="removeProduct(product.ID)" class="btn btn-danger mt-2 ml-2">Remove</button>
+  </div>
+
+</div>

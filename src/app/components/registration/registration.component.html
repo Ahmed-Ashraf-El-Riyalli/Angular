@@ -1,0 +1,111 @@
+<h2>Registration</h2>
+
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <table class="table table-bordered table-responsive">
+    <tbody>
+      <tr>
+        <td class="">
+          <label for="name">Name : </label>
+        </td>
+        <td>
+          <input id="name" type="text" formControlName="name" (input)="nameOnInput()" />
+          <ng-container *ngIf="nameControl.invalid && nameControl.dirty">
+            <span *ngIf="nameControl.errors.invalidName">
+              Invalid Name
+            </span>
+            <span *ngIf="nameControl.errors.minlength">
+              Name is too short
+            </span>
+            <span *ngIf="nameControl.errors.required">
+              Name is required
+            </span>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="">
+          <label for="age">Age : </label>
+        </td>
+        <td>
+          <input id="age" type="number" formControlName="age" />
+          <ng-container *ngIf="ageControl.invalid && ageControl.dirty">
+            <span class="ml-2" *ngIf="ageControl.errors.required">
+              Age is required
+            </span>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="">
+          <label for="address">Address : </label>
+        </td>
+        <td>
+            <input id="address" type="text" formControlName="address" />
+            <ng-container *ngIf="addressControl.invalid && addressControl.dirty">
+              <span class="ml-2" *ngIf="addressControl.errors.minlength">
+                Address is too short
+              </span>
+              <span class="ml-2" *ngIf="addressControl.errors.required">
+                Address is required
+              </span>
+            </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="">
+          <label for="email">Email : </label>
+        </td>
+        <td>
+          <input id="email" type="email" formControlName="email" />
+          <ng-container *ngIf="emailControl.invalid && emailControl.dirty">
+            <span class="ml-2" *ngIf="emailControl.errors.pattern">
+              Invalid Email
+            </span>
+            <span class="ml-2" *ngIf="emailControl.errors.minlength">
+              Email is too short
+            </span>
+            <span class="ml-2" *ngIf="emailControl.errors.required">
+              Email is required
+            </span>
+            <span class="ml-2" *ngIf="emailControl.errors.existingEmail">
+              Email Existing
+            </span>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="">
+          <label for="password">Password : </label>
+        </td>
+        <td>
+          <input id="password" type="password" formControlName="password" />
+          <span *ngIf="passwordControl.invalid && passwordControl.dirty">
+            Invalid Password
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td class="">
+          <label for="confirmPassword">Confirm Password : </label>
+        </td>
+        <td>
+          <input id="confirmPassword" type="password" formControlName="confirmPassword" />
+          <span *ngIf="confirmPasswordControl.errors?.passwordNotMatch &&
+          confirmPasswordControl.dirty && passwordControl.dirty">
+            Password Not Match
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="submit" value="Register" [disabled]="registrationForm.invalid" />
+        </td>
+        <td>
+          <input type="reset" value="Reset" (click)="onReset()" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+
+<p>Form Status is {{ registrationForm.status }}</p>

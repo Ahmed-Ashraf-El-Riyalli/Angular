@@ -1,0 +1,33 @@
+<div class="container">
+  <h1 class="text-center">Root Component</h1>
+
+  <nav class="navbar navbar-expand-sm bg-light navbar-dark mb-4">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a routerLink="home" routerLinkActive="active-link"
+          class="m-1 btn btn-light">Home</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="products" routerLinkActive="active-link"
+          class="m-1 btn btn-light">Products</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="user" routerLinkActive="active-link"
+          class="m-1 btn btn-light">User Data</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="login" routerLinkActive="active-link"
+          class="m-1 btn btn-light">Login</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="registration" routerLinkActive="active-link"
+          class="m-1 btn btn-light">Registration</a>
+      </li>
+    </ul>
+  </nav>
+
+  <router-outlet></router-outlet>
+
+  <br /><br />
+  <h4 class="alert alert-dark m-5 text-center">Footer</h4>
+</div>
