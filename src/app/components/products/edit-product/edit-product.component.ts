@@ -37,11 +37,12 @@ export class EditProductComponent implements OnInit {
     };
 
     this.accessAPIService.update(this.urlSection, id, product).subscribe(
-      data => this.product = data,
+      data => {
+        this.product = data;
+        this.router.navigate(['products', 'show']);
+      },
       error => console.log(error)
     );
-
-    this.router.navigate(['products', 'show']);
   }
 
 }

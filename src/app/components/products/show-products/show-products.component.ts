@@ -18,18 +18,17 @@ export class ShowProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.refreshProductList();
+    console.log('ngOnInit');
   }
 
   refreshProductList(): void {
-    this.accessAPIService.getAll(this.accessAPIService.productUrl).subscribe(
-      data => this.productList  = data,
+    this.activatedRoute.data.subscribe(
+      (data: {myData: Product[]}) => {
+        this.productList = data.myData;
+      },
       error => console.log(error)
-    )
+    );
 
-    // this.activatedRoute.data.subscribe(
-    //   data => console.log(data),
-    //   error => console.log(error)
-    // )
   }
 
 }
