@@ -35,12 +35,13 @@ class AddProductComponent {
             ImageName: null
         };
         const urlSection = 'Product';
-        this.accessAPIService.add(urlSection, product).subscribe(data => console.log(data), error => console.log(error));
-        this.router.navigate(['products', 'show']);
+        this.accessAPIService.add(urlSection, product).subscribe(data => {
+            this.router.navigate(['products', 'show']);
+        }, error => console.log(error));
     }
 }
 AddProductComponent.ɵfac = function AddProductComponent_Factory(t) { return new (t || AddProductComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_access_api_service__WEBPACK_IMPORTED_MODULE_1__["AccessAPIService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
-AddProductComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AddProductComponent, selectors: [["app-add-product"]], decls: 20, vars: 0, consts: [[1, "alert", "alert-secondary"], [1, "m-4", 3, "ngSubmit"], [1, "row", "form-group"], ["for", "name", 1, "col-1", "col-form-label", "p-2", "text-sm-right"], ["id", "name", "type", "text", "placeholder", "Name", 1, "col-3", "form-control"], ["name", ""], ["for", "price", 1, "col-1", "col-form-label", "p-2", "text-sm-right"], ["id", "price", "type", "number", "placeholder", "Price", 1, "col-3", "form-control"], ["price", ""], ["for", "quantity", 1, "col-1", "col-form-label", "p-2", "text-sm-right"], ["id", "quantity", "type", "number", "placeholder", "Quantity", 1, "col-3", "form-control"], ["quantity", ""], ["type", "submit", "value", "Add New Product", 1, "btn", "btn-primary"], ["routerLink", "../show", 1, "btn", "btn-secondary", "ml-2"]], template: function AddProductComponent_Template(rf, ctx) { if (rf & 1) {
+AddProductComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AddProductComponent, selectors: [["app-add-product"]], decls: 20, vars: 0, consts: [[1, "alert", "alert-secondary"], [1, "m-4", 3, "ngSubmit"], [1, "row", "form-group"], ["for", "name", 1, "col-1", "col-form-label", "p-3", "text-sm-right"], ["id", "name", "type", "text", "placeholder", "Name", 1, "col-3", "form-control"], ["name", ""], ["for", "price", 1, "col-1", "col-form-label", "p-3", "text-sm-right"], ["id", "price", "type", "number", "placeholder", "Price", 1, "col-3", "form-control"], ["price", ""], ["for", "quantity", 1, "col-1", "col-form-label", "p-3", "text-sm-right"], ["id", "quantity", "type", "number", "placeholder", "Quantity", 1, "col-3", "form-control"], ["quantity", ""], ["type", "submit", "value", "Add New Product", 1, "btn", "btn-primary"], ["routerLink", "../show", 1, "btn", "btn-secondary", "ml-2"]], template: function AddProductComponent_Template(rf, ctx) { if (rf & 1) {
         const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "form", 1);
@@ -680,8 +681,9 @@ class RemoveProductComponent {
         this.accessAPIService.getOne(this.urlSection, id).subscribe(data => this.product = data, error => console.log(error));
     }
     removeProduct(id) {
-        this.accessAPIService.delete(this.urlSection, id).subscribe(data => console.log(data), error => console.log(error));
-        this.router.navigate(['products', 'show']);
+        this.accessAPIService.delete(this.urlSection, id).subscribe(data => {
+            this.router.navigate(['products', 'show']);
+        }, error => console.log(error));
     }
 }
 RemoveProductComponent.ɵfac = function RemoveProductComponent_Factory(t) { return new (t || RemoveProductComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_access_api_service__WEBPACK_IMPORTED_MODULE_1__["AccessAPIService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
@@ -978,8 +980,10 @@ class EditProductComponent {
             Quantity: quantity,
             ImageName: null
         };
-        this.accessAPIService.update(this.urlSection, id, product).subscribe(data => this.product = data, error => console.log(error));
-        this.router.navigate(['products', 'show']);
+        this.accessAPIService.update(this.urlSection, id, product).subscribe(data => {
+            this.product = data;
+            this.router.navigate(['products', 'show']);
+        }, error => console.log(error));
     }
 }
 EditProductComponent.ɵfac = function EditProductComponent_Factory(t) { return new (t || EditProductComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_access_api_service__WEBPACK_IMPORTED_MODULE_1__["AccessAPIService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
@@ -1565,13 +1569,12 @@ class ShowProductsComponent {
     }
     ngOnInit() {
         this.refreshProductList();
+        console.log('ngOnInit');
     }
     refreshProductList() {
-        this.accessAPIService.getAll(this.accessAPIService.productUrl).subscribe(data => this.productList = data, error => console.log(error));
-        // this.activatedRoute.data.subscribe(
-        //   data => console.log(data),
-        //   error => console.log(error)
-        // )
+        this.activatedRoute.data.subscribe((data) => {
+            this.productList = data.myData;
+        }, error => console.log(error));
     }
 }
 ShowProductsComponent.ɵfac = function ShowProductsComponent_Factory(t) { return new (t || ShowProductsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_access_api_service__WEBPACK_IMPORTED_MODULE_1__["AccessAPIService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"])); };
@@ -2146,11 +2149,11 @@ const routes = [
     { path: 'user/update', component: _components_user_update_user_update_user_component__WEBPACK_IMPORTED_MODULE_16__["UpdateUserComponent"] },
     { path: 'products', component: _components_products_products_component__WEBPACK_IMPORTED_MODULE_6__["ProductsComponent"],
         canActivate: [_core_guards_auth_guard__WEBPACK_IMPORTED_MODULE_13__["AuthGuard"]],
-        data: { pathUrl: 'products' },
-        resolve: { myData: _core_guards_products_resolver__WEBPACK_IMPORTED_MODULE_14__["ProductsResolver"] },
         children: [
             { path: '', redirectTo: 'show', pathMatch: 'full' },
-            { path: 'show', component: _components_products_show_products_show_products_component__WEBPACK_IMPORTED_MODULE_5__["ShowProductsComponent"] },
+            { path: 'show', component: _components_products_show_products_show_products_component__WEBPACK_IMPORTED_MODULE_5__["ShowProductsComponent"],
+                resolve: { myData: _core_guards_products_resolver__WEBPACK_IMPORTED_MODULE_14__["ProductsResolver"] },
+            },
             { path: 'add', component: _components_products_add_product_add_product_component__WEBPACK_IMPORTED_MODULE_4__["AddProductComponent"] },
             { path: 'details/:id', component: _components_products_details_product_details_product_component__WEBPACK_IMPORTED_MODULE_1__["DetailsProductComponent"],
                 resolve: { items: _core_guards_product_resolver__WEBPACK_IMPORTED_MODULE_0__["ProductResolver"] },
